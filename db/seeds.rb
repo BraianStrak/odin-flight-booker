@@ -10,13 +10,6 @@ Flight.delete_all
 
 Airport.create(code: 'GER')
 Airport.create(code: 'POL')
-Airport.create(code: 'USA')
-Airport.create(code: 'CAN')
-Airport.create(code: 'FRA')
-Airport.create(code: 'RUS')
 
 Flight.create!(start: DateTime.new(2020, 10, 1, 10, 10), seconds_duration: 15000, arrival: Airport.first, departure: Airport.second) #THESE ARE THE THINGS IN THE FLIGHT MODEL YOU NUMPTY
 Flight.create!(start: DateTime.new(2020, 10, 1, 10, 10), seconds_duration: 15000, arrival: Airport.second, departure: Airport.first)
-#Flight.create(arrival_id: 2, departure_id: 5, start: DateTime.new(2020, 10, 1, 10, 10) , seconds_duration: 15000 )
-#Flight.create(arrival_id: 6, departure_id: 3, start: DateTime.new(2020, 10, 1, 10, 10) , seconds_duration: 15000 )
-#Flight.create(arrival_id: 1, departure_id: 3, start: DateTime.new(2020, 10, 1, 10, 10) , seconds_duration: 15000 )

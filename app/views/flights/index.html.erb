@@ -1,5 +1,5 @@
  <!--Four dropdowns - A list of FROM and TO airports, number of passengers to book the flight for (1-4) and a DATE dropdown -->
- <%= form_with url: "/flights", method: :get, local: true do %>
+ <%= form_with url: "/", method: :get, local: true do %>
     <%= label_tag ("From:") %>
     <%= select_tag "departure_id", options_from_collection_for_select(@airports, "id", "code")%>
     <br>
@@ -7,7 +7,7 @@
     <%= select_tag "arrival_id", options_from_collection_for_select(@airports, "id", "code")%>
     <br>
     <%= label_tag ("Flight Date:") %>
-    <%= select_tag "start", options_from_collection_for_select(@flights, "start", :flight_date_formatted) %>
+    <%= select_tag "start", options_from_collection_for_select(@flights.get_start_dates, "start", :flight_date_formatted) %>
     <br>
     <%= submit_tag ("SEARCH") %>
  <% end %>
@@ -15,7 +15,13 @@
  <br> 
 
  <%if @resultFlights != nil %>
-    <%resultFlights.each do |result|%>
-        Flight number found: <%=result.id%><br>
+    Flights Found: <br>
+    <%=form_with url: "/", method: :get, local:true do %>
+        <%@resultFlights.each do |result|%>
+            Flight Number <%=result.id%>
+            <%=radio_button_tag('flightChoice', result) %>
+            <br>
+        <%end%>
+        <%= submit_tag("Book")%>
     <%end%>
  <%end%>
