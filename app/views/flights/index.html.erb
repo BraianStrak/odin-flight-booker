@@ -16,12 +16,12 @@
 
  <%if @resultFlights != nil %>
     Flights Found: <br>
-    <%=form_with url: "/", method: :get, local:true do %>
+    <%=form_with url: "/bookings/new", method: :get, local:true do %>
         <%@resultFlights.each do |result|%>
             Flight Number <%=result.id%>
             <%=radio_button_tag('flightChoice', result) %>
             <br>
         <%end%>
-        <%= submit_tag("Book")%>
+        <%= submit_tag("Book now")%>
     <%end%>
  <%end%>
