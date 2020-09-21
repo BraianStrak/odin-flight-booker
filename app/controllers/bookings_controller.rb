@@ -7,6 +7,11 @@ class BookingsController < ApplicationController
             puts key.to_s + ' : ' + value
         end
         @flight = Flight.find(params[:flightChoice])
+        @passenger = Passenger.new
+    end
+
+    def create
+        
     end
 
     def index
@@ -14,10 +19,6 @@ class BookingsController < ApplicationController
     end
 
     def show
-
-    end
-
-    def create
 
     end
 end

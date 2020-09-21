@@ -1,2 +1,16 @@
-Welcome to the flight booker
-Flight date and time: <%=@flight.start%>
+Welcome to the flight booker <br><br>
+Flight date and time: <%=@flight.start%><br>
+From airport: <%=@flight.departure.code %><br>
+To airport: <%=@flight.arrival.code %><br>
+
+<!-- Form creates a new booking with the flight ID and a new passenger, connecting the passenger ID to the new booking object. -->
+
+<%= form_with model: @booking, local: true do |booking_form| %>
+    <%= booking_form.hidden_field :flight_id, value: @flight.id %><br>
+    
+    <%= booking_form.fields_for :passenger, @passenger do |passenger_form| %><br>
+        Name:<%= passenger_form.text_field :name %><br>                
+        Email:<%= passenger_form.text_field :email %><br>
+    <% end %>
+    <%= submit_tag "Book"%>
+<% end %>

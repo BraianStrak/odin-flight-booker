@@ -3,4 +3,7 @@ class Booking < ApplicationRecord
     #to access flight and passenger information we can by booking.flight and booking.passenger
     belongs_to :flight
     belongs_to :passenger
+
+    accepts_nested_attributes_for :passenger
+
 end
