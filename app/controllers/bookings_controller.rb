@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
         @booking = Booking.new(booking_params)
 
         if @booking.save
+            PassengerMailer.welcome_email(@booking.passenger).deliver_now
             redirect_to root_path
         else
            

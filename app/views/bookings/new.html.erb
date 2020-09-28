@@ -9,6 +9,7 @@ To airport: <%=@flight.arrival.code %><br>
     <%= booking_form.hidden_field :flight_id, value: @flight.id %><br>
     
     <%= booking_form.fields_for :passenger, @passenger do |passenger_form| %><br>
+        <%= passenger_form.hidden_field :passenger_id, value: @passenger.id %><br>
         Name:<%= passenger_form.text_field :name %><br>                
         Email:<%= passenger_form.text_field :email %><br>
     <% end %>
